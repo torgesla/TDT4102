@@ -166,36 +166,36 @@ void pythagoras()
 
 	Polygon rightTriangle;
 	// Triangle
-	rightTriangle.add(Point{400, 200}); // top left edge
-	rightTriangle.add(Point{400, 400}); // bottom left edge
-	rightTriangle.add(Point{700, 400}); // right most edge
+	rightTriangle.add(Point{400, 300}); // top left edge
+	rightTriangle.add(Point{400, 500}); // bottom left edge
+	rightTriangle.add(Point{700, 500}); // right most edge
 	rightTriangle.set_fill_color(Color::red);
 	win.attach(rightTriangle);
 
 	// Left most square
 	Polygon square1;
-	square1.add(Point{400, 200});
-	square1.add(Point{400, 400});
-	square1.add(Point{200, 400});
-	square1.add(Point{200, 200});
+	square1.add(Point{400, 300});
+	square1.add(Point{400, 500});
+	square1.add(Point{200, 500});
+	square1.add(Point{200, 300});
 	square1.set_fill_color(Color::blue);
 	win.attach(square1);
 
 	// Bottom square
 	Polygon square2;
-	square2.add(Point{400, 400});
-	square2.add(Point{700, 400});
-	square2.add(Point{700, 700});
-	square2.add(Point{400, 700});
+	square2.add(Point{400, 500});
+	square2.add(Point{700, 500});
+	square2.add(Point{700, 800});
+	square2.add(Point{400, 800});
 	square2.set_fill_color(Color::green);
 	win.attach(square2);
 
 	// Hypothenous square
 	Polygon square3;
-	square3.add(Point{400, 200});
-	square3.add(Point{700, 400}); // Lengde = 360.56
-	square3.add(Point{900, 100});
-	square3.add(Point{600, -100});
+	square3.add(Point{400, 300});
+	square3.add(Point{700, 500}); // Lengde = 360.56
+	square3.add(Point{900, 200});
+	square3.add(Point{600, 0});
 	square3.set_fill_color(Color::yellow);
 	win.attach(square3);
 
@@ -212,7 +212,7 @@ vector<double> calculateSeries(double totalt_lan, double rente, int antall_ar) /
 
 	for (int i = 0; i < antall_ar; i++)
 	{
-		innbetalings_vector[i] = avdrag + rente * gjenstaende_lan; // Fra formel for serielån
+		innbetalings_vector.push_back(avdrag + rente * gjenstaende_lan); // Fra formel for serielån
 		gjenstaende_lan -= avdrag;
 	}
 	return innbetalings_vector;
@@ -223,7 +223,7 @@ vector<double> calculateAnnuity(double totalt_lan, double rente, int antall_ar)
 
 	for (int i = 0; i < antall_ar; i++)
 	{
-		innbetalings_vector[0] = totalt_lan * rente / (1 - pow(1 + rente, -antall_ar));
+		innbetalings_vector.push_back(totalt_lan * rente / (1 - pow(1 + rente, -antall_ar)));
 	}
 	return innbetalings_vector;
 }
@@ -233,9 +233,12 @@ void printLan(double totalt_lan, double rente, int antall_ar)
 	double annuitet_total = 0;
 	vector<double> serielan_innbetalinger = calculateSeries(totalt_lan, rente, antall_ar);
 	vector<double> annuitetslan_innbetalinger = calculateAnnuity(totalt_lan, rente, antall_ar);
-	cout << "År"
+	cout << "Aar"
+		 << "\t"
 		 << "Annuitet"
+		 << "\t"
 		 << "Serie"
+		 << "\t"
 		 << "Differanse" << endl;
 	for (int i = 0; i < serielan_innbetalinger.size(); i++)
 	{
@@ -243,9 +246,9 @@ void printLan(double totalt_lan, double rente, int antall_ar)
 		double annuitet = annuitetslan_innbetalinger[i];
 		serie_total += serie;
 		annuitet_total += annuitet;
-		cout << i + 1 << annuitet << serie << annuitet - serie << endl;
+		cout << i + 1 << "\t" << annuitet << "\t\t" << serie << "\t" << annuitet - serie << endl;
 	}
-	cout << "Totalt" << annuitet_total << serie_total << annuitet_total - serie_total << endl;
+	cout << "\nTotalt: " << annuitet_total << "\t\t" << serie_total << "\t" << annuitet_total - serie_total << endl;
 }
 int main()
 {
@@ -258,6 +261,8 @@ int main()
 	//cout << inputDouble() << "\n";
 	// pythagoras();
 	// calculateSeries(10000, 5, 10);
+	printLan(10000, 5, 10);
 	// calculateAnnuity(10000, 5, 10);
 	//menu();
+	keep_window_open();
 }
