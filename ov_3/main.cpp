@@ -4,6 +4,7 @@
 #include <stdlib.h> */
 
 #include "cannonball.h"
+#include "utilities.h"
 
 void testDeviation(double compareOperand, double toOperand, double maxError, string name)
 {
@@ -21,6 +22,7 @@ void testDeviation(double compareOperand, double toOperand, double maxError, str
 
 int main()
 {
-    int tilfeldig_tall = rand();
-    cout << tilfeldig_tall;
+    srand(time(NULL));
+    playTargetPractice();
+    keep_window_open();
 }

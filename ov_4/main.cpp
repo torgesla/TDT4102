@@ -19,7 +19,7 @@ int main()
 	/*testCallByValue();
 	testCallByReference();
 	testVectorSorting();*/
-	struct Student
+	Student student;
 
 	keep_window_open();
 }

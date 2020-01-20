@@ -41,8 +41,8 @@ double degToRad(double deg) { return deg * M_PI / 180; }
 
 // Returnerer henholdsvis farten i x-, og y-retning, gitt en vinkel
 // theta og en absoluttfart absVelocity.
-double getVelocityX(double theta, double absVelocity) { return sin(theta) * absVelocity; }
-double getVelocityY(double theta, double absVelocity) { return cos(theta) * absVelocity; }
+double getVelocityX(double theta, double absVelocity) { return sin(degToRad(theta)) * absVelocity; }
+double getVelocityY(double theta, double absVelocity) { return cos(degToRad(theta)) * absVelocity; }
 
 // Dekomponerer farten gitt av absVelocity, i x- og y-komponentene
 // gitt vinkelen theta. Det første elementet i vectoren skal være
@@ -50,7 +50,7 @@ double getVelocityY(double theta, double absVelocity) { return cos(theta) * absV
 // "Vector" i funksjonsnavnet er vektor-begrepet i geometri
 vector<double> getVelocityVector(double theta, double absVelocity)
 {
-    vector<double> velocity_vector;
+    vector<double> velocity_vector(2); // Init vector of size 2
     velocity_vector[0] = getVelocityX(theta, absVelocity);
     velocity_vector[1] = getVelocityY(theta, absVelocity);
     return velocity_vector;

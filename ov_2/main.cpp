@@ -86,7 +86,17 @@ double convert_NOK_to_EUR()
 	}
 	return nok / ex_rate;
 }
-
+void printMultiplicationTables(int w, int h)
+{
+	for (int i = 1; i < h; i++)
+	{
+		for (int j = 1; j < w; j++)
+		{
+			cout << i * j << "\t";
+		}
+		cout << endl;
+	}
+}
 double discriminant(double a, double b, double c) { return pow(b, 2) - 4 * a * c; }
 void printRealRoots(double a, double b, double c)
 {
@@ -261,8 +271,9 @@ int main()
 	//cout << inputDouble() << "\n";
 	// pythagoras();
 	// calculateSeries(10000, 5, 10);
-	printLan(10000, 5, 10);
+	//printLan(10000, 5, 10);
 	// calculateAnnuity(10000, 5, 10);
 	//menu();
+	printMultiplicationTables(10, 10);
 	keep_window_open();
 }
