@@ -9,6 +9,7 @@
 #include "std_lib_facilities.h"
 #include "utilities.h"
 #include "tests.h"
+#include "mastermind.h"
 
 //------------------------------------------------------------------------------'
 
@@ -19,9 +20,16 @@ int main()
 	/*testCallByValue();
 	testCallByReference();
 	testVectorSorting();*/
-	Student student;
 
-	keep_window_open();
+	/* 	Student student1;
+	student1.name = "Torgeir";
+	student1.age = 24;
+	student1.studyProgram = "ML";
+	printStudent(student1); */
+
+	//testString();
+	//readInputToString(5, 'A', 'D');
+	playMastermind();
+
+	//------------------------------------------------------------------------------
 }
-
-//------------------------------------------------------------------------------

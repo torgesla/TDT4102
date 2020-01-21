@@ -47,3 +47,18 @@ void testVectorSorting()
     cout << "Median element is: " << medianOfVector(percentages) << endl;
     //swapNumbers(percentages[0], percentages[1]);
 }
+void testString()
+{
+    string grades;
+    vector<int> gradeCount;
+    grades = randomizeString(80, 'A', 'F');
+
+    for (char grade = 'F'; grade >= 'A'; grade--)
+        gradeCount.push_back(countChar(grades, grade));
+    int sum = 0;
+    for (int i = 0; i < gradeCount.size(); i++)
+    {
+        sum += i * gradeCount[i];
+    }
+    cout << sum / grades.size() << endl;
+}
