@@ -1,0 +1,4 @@
+0: Her skriver
+1: jeg mange
+2: lijer
+3: kan lese
